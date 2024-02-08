@@ -26,7 +26,7 @@
 //add feature layer into function
       ], function(esriConfig, Map, MapView, FeatureLayer) {
 
-  //esriConfig.apiKey = "YOUR_API_KEY";
+  //esriConfig.apiKey = "AAPK665b3b280ef14c7c9c026d5499ce57bbDmz_Uep3BlWQy7-BELwkXHzQ2tM_7LFXEEQ6yanDtzV_xRrABb31NYQuieBi0s0m";
         
 //map properties
         const map = new Map({
@@ -49,6 +49,13 @@
 //add trailheadslayer to the map
         map.add(trailheadsLayer);
 
+//Trails feature layer (lines) - typically lines displayed before pictures, so will be adding index of 0)
+        const trailsLayer = new FeatureLayer({
+          url: "https://services3.arcgis.com/GVgbJbqm8hXASVYi/arcgis/rest/services/Trails/FeatureServer/0"
+        });
+
+//when adding lines to map, add index 0 to be added to top of array to be drawn before points
+        map.add(trailsLayer, 0);
         
       });
     </script>

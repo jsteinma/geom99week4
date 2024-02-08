@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+      <title>ArcGIS Maps SDK for JavaScript Tutorials: Add a point, line, and polygon</title>
+      <style>
+        html, body, #viewDiv {
+          padding: 0;
+          margin: 0;
+          height: 100%;
+          width: 100%;
+        }
+      </style>
+      <link rel="stylesheet" href="https://js.arcgis.com/4.28/esri/themes/light/main.css">
+      <script src="https://js.arcgis.com/4.28/"></script>
+      <script>
+  
+  //added Graphic and GraphicsLayer modules to require statement
+        require([
+          "esri/config",
+          "esri/Map",
+          "esri/views/MapView",
+      
+          "esri/Graphic",
+          "esri/layers/GraphicsLayer"
+      
+          ], function(esriConfig,Map, MapView, Graphic, GraphicsLayer) {
+      
+          //esriConfig.apiKey = "YOUR_API_KEY";
+        
+          const map = new Map({
+            basemap: "arcgis/topographic" // basemap styles service
+          });
+        
+          const view = new MapView({
+            map: map,
+            center: [-118.80500,34.02700], //Longitude, latitude
+            zoom: 13,
+            container: "viewDiv"
+         });
+  
+  //add graphics layer container to store graphics (used with map view to display graphics)
+          const graphicsLayer = new GraphicsLayer();
+            map.add(graphicsLayer);
+  
+  //creating a point and simpleMarkerSymbol to create a graphic
+          const point = {       //Create a point
+              type: "point",
+              longitude: -118.80657463861,
+              latitude: 34.0005930608889
+           };
+           const simpleMarkerSymbol = {      //create simple marker
+              type: "simple-marker",
+              color: [226, 119, 40],  // Orange
+              outline: {
+                  color: [255, 255, 255], // White
+                  width: 1
+              }
+           };
+  
+  //create graphic class (that will autocast point and simplesymbolmarker) and set geometry and symbol properties
+          const pointGraphic = new Graphic({
+              geometry: point,
+              symbol: simpleMarkerSymbol
+           });
+           graphicsLayer.add(pointGraphic);
+  
+       });
+      </script>
+    </head>
+    <body>
+      <div id="viewDiv"></div>
+    </body>
+  </html>

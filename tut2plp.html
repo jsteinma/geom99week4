@@ -44,13 +44,14 @@
           const graphicsLayer = new GraphicsLayer();
             map.add(graphicsLayer);
   
+//point
 //creating a point and simpleMarkerSymbol to create a graphic
           const point = {       //Create a point
               type: "point",
               longitude: -118.80657463861,
               latitude: 34.0005930608889
            };
-           const simpleMarkerSymbol = {      //create simple marker
+           const simpleMarkerSymbol = {      //create simple point marker
               type: "simple-marker",
               color: [226, 119, 40],  // Orange
               outline: {
@@ -60,14 +61,15 @@
            };
   
 //create graphic class (that will autocast point and simplesymbolmarker) and set geometry and symbol properties
-          const pointGraphic = new Graphic({
+          const pointGraphic = new Graphic({        //point graphic to call
               geometry: point,
               symbol: simpleMarkerSymbol
            });
            graphicsLayer.add(pointGraphic);
 
+//polyline
 // Create a line geometry using polyline and line symbol (used to create line graphic)
-          const polyline = {
+          const polyline = {        //polyline geometry
             type: "polyline",
             paths: [
                 [-118.821527826096, 34.0139576938577], //Longitude, latitude
@@ -82,11 +84,40 @@
           };
 
 //create polyline graphic class (will autocast the polyline and simplelinesymbol) and add geomertry and symbol prop
-          const polylineGraphic = new Graphic({
+          const polylineGraphic = new Graphic({        //polyline graphic
             geometry: polyline,
             symbol: simpleLineSymbol
           });
           graphicsLayer.add(polylineGraphic);
+
+//polygon
+// Create a polygon geometry (define polygon and simplefillsymbol used to create graphic)
+          const polygon = {        //polygon geometry
+            type: "polygon",
+            rings: [
+                [-118.818984489994, 34.0137559967283], //Longitude, latitude
+                [-118.806796597377, 34.0215816298725], //Longitude, latitude
+                [-118.791432890735, 34.0163883241613], //Longitude, latitude
+                [-118.79596686535, 34.008564864635],   //Longitude, latitude
+                [-118.808558110679, 34.0035027131376]  //Longitude, latitude
+            ]
+          };
+          
+          const simpleFillSymbol = {      //polygon symbol
+            type: "simple-fill",
+            color: [227, 139, 79, 0.8],  // Orange, opacity 80%
+            outline: {
+                color: [255, 255, 255],
+                width: 1
+            }
+          };
+
+//create polygon graphic (that will autocast the polygon and simplefillsymbol) and set geometry and symbol prop
+          const polygonGraphic = new Graphic({        //polygon graphic
+            geometry: polygon,
+            symbol: simpleFillSymbol,
+          });
+          graphicsLayer.add(polygonGraphic);
 
        });
       </script>

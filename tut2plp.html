@@ -102,6 +102,16 @@
                 [-118.808558110679, 34.0035027131376]  //Longitude, latitude
             ]
           };
+
+//create popup for polygon graphic using the popup template and attributes properties
+          const popupTemplate = {        //popup template
+            title: "{Name}",
+            content: "{Description}"
+          }
+          const attributes = {        //attributes
+            Name: "Graphic",
+            Description: "I am a polygon"
+          }
           
           const simpleFillSymbol = {      //polygon symbol
             type: "simple-fill",
@@ -112,10 +122,14 @@
             }
           };
 
+
 //create polygon graphic (that will autocast the polygon and simplefillsymbol) and set geometry and symbol prop
           const polygonGraphic = new Graphic({        //polygon graphic
             geometry: polygon,
             symbol: simpleFillSymbol,
+            //add popup template and attributes
+            attributes: attributes,
+            popupTemplate: popupTemplate
           });
           graphicsLayer.add(polygonGraphic);
 

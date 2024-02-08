@@ -16,7 +16,7 @@
       <script src="https://js.arcgis.com/4.28/"></script>
       <script>
   
-  //added Graphic and GraphicsLayer modules to require statement
+//added Graphic and GraphicsLayer modules to require statement
         require([
           "esri/config",
           "esri/Map",
@@ -40,11 +40,11 @@
             container: "viewDiv"
          });
   
-  //add graphics layer container to store graphics (used with map view to display graphics)
+//add graphics layer container to store graphics (used with map view to display graphics)
           const graphicsLayer = new GraphicsLayer();
             map.add(graphicsLayer);
   
-  //creating a point and simpleMarkerSymbol to create a graphic
+//creating a point and simpleMarkerSymbol to create a graphic
           const point = {       //Create a point
               type: "point",
               longitude: -118.80657463861,
@@ -59,13 +59,35 @@
               }
            };
   
-  //create graphic class (that will autocast point and simplesymbolmarker) and set geometry and symbol properties
+//create graphic class (that will autocast point and simplesymbolmarker) and set geometry and symbol properties
           const pointGraphic = new Graphic({
               geometry: point,
               symbol: simpleMarkerSymbol
            });
            graphicsLayer.add(pointGraphic);
-  
+
+// Create a line geometry using polyline and line symbol (used to create line graphic)
+          const polyline = {
+            type: "polyline",
+            paths: [
+                [-118.821527826096, 34.0139576938577], //Longitude, latitude
+                [-118.814893761649, 34.0080602407843], //Longitude, latitude
+                [-118.808878330345, 34.0016642996246]  //Longitude, latitude
+            ]
+          };
+          const simpleLineSymbol = {      //and line symbol
+            type: "simple-line",
+            color: [226, 119, 40], // Orange
+            width: 2
+          };
+
+//create polyline graphic class (will autocast the polyline and simplelinesymbol) and add geomertry and symbol prop
+          const polylineGraphic = new Graphic({
+            geometry: polyline,
+            symbol: simpleLineSymbol
+          });
+          graphicsLayer.add(polylineGraphic);
+
        });
       </script>
     </head>

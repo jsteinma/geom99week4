@@ -43,8 +43,16 @@
           container: "viewDiv" // Div element
         });
 
+        const loveplacespopup = {
+          "title": "Loved Place",
+          "content": "Name: {LocationName}<hr>Feature Description: {LocationDetails}<hr>Province: {Province}"
+        }
+          
         const loveplacesLayer = new FeatureLayer({
-          url: "https://services1.arcgis.com/pMeXRvgWClLJZr3s/ArcGIS/rest/services/LoveandWantToGo/FeatureServer/0"
+          url: "https://services1.arcgis.com/pMeXRvgWClLJZr3s/ArcGIS/rest/services/LoveandWantToGo/FeatureServer/0",
+          outFields: ["LocationName","LocationDescription","Province"],
+          popupTemplate: loveplacespopup
+          
         });
 
         map.add(loveplacesLayer);

@@ -49,14 +49,22 @@
 //add trailheadslayer to the map
         map.add(trailheadsLayer);
 
-//Trails feature layer (lines) - typically lines displayed before pictures, so will be adding index of 0)
+//Trails feature layer (lines) - typically lines displayed before points, so will be adding index of 0)
         const trailsLayer = new FeatureLayer({
           url: "https://services3.arcgis.com/GVgbJbqm8hXASVYi/arcgis/rest/services/Trails/FeatureServer/0"
         });
 
 //when adding lines to map, add index 0 to be added to top of array to be drawn before points
         map.add(trailsLayer, 0);
-        
+
+// Parks and open spaces (polygons) - typically polygons displayed before lines, so will be adding index of 0 again)
+        const parksLayer = new FeatureLayer({
+          url: "https://services3.arcgis.com/GVgbJbqm8hXASVYi/arcgis/rest/services/Parks_and_Open_Space/FeatureServer/0"
+        });
+
+//when adding polygons to map, add index 0 to be added to top of array to be drawn before lines
+        map.add(parksLayer, 0);
+
       });
     </script>
     

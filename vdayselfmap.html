@@ -5,6 +5,7 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
     <title>Valentine's Day Love To Go Places Map</title>
 
+<!-- Base map from tutorial: https://developers.arcgis.com/javascript/latest/tutorials/display-a-map/ -->
     <style>
       html, body {
         font-family: Trebuchet, sans-serif;
@@ -22,7 +23,7 @@
       }
       
       #viewDiv {
-        width: 80%;
+        width: 90%;
         height: 80%;
         outline-style: inset;
         outline-color: red;
@@ -36,7 +37,6 @@
     <link rel="stylesheet" href="https://js.arcgis.com/4.28/esri/themes/light/main.css">
     <script src="https://js.arcgis.com/4.28/"></script>
 
-    <!-- require statement added to load the Map and MapView Modules-->
     <!-- can add the map view using const view to set map property, container property viewdiv to display contents of map -->
     <script>
       require(
@@ -59,6 +59,7 @@
           container: "viewDiv" // Div element
         });
 
+//renderer tutorial from: https://developers.arcgis.com/javascript/latest/tutorials/style-a-feature-layer/
         const loveplacesRenderer = {
           "type": "simple",
           "symbol": {
@@ -70,6 +71,7 @@
           }
         }
 
+//popup turotial from: https://developers.arcgis.com/javascript/latest/tutorials/display-a-pop-up/
         const loveplacespopup = {
           "title": "Loved Place",
           "content": "Name: {LocationName}<hr>Description: {LocationDetails}<hr>Province: {Province}"
@@ -80,7 +82,6 @@
           renderer: loveplacesRenderer,
           outFields: ["LocationName","LocationDescription","Province"],
           popupTemplate: loveplacespopup
-          
         });
 
         map.add(loveplacesLayer);
@@ -89,7 +90,7 @@
 
   </head>
   <body>
-    <h1>Beautiful Destinations To Visit For Valentine's Day...</h1>
+    <h1>Beautiful Places To Go (For Valentines Day)...</h1>
     <h2>(Click the markers to learn more)</h2>
     <div id="viewDiv"></div>
   </body>

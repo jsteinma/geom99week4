@@ -43,6 +43,16 @@
           container: "viewDiv" // Div element
         });
 
+        const loveplacesRenderer = {
+          "type": "simple",
+          "symbol": {
+            "type": "picture-marker",
+            "url": "http://static.arcgis.com/images/Symbols/NPS/npsPictograph_0231b.png",
+            "width": "18px",
+            "height": "18px"
+          }
+        }
+
         const loveplacespopup = {
           "title": "Loved Place",
           "content": "Name: {LocationName}<hr>Description: {LocationDetails}<hr>Province: {Province}"
@@ -50,6 +60,7 @@
           
         const loveplacesLayer = new FeatureLayer({
           url: "https://services1.arcgis.com/pMeXRvgWClLJZr3s/ArcGIS/rest/services/LoveandWantToGo/FeatureServer/0",
+          renderer: loveplacesRenderer,
           outFields: ["LocationName","LocationDescription","Province"],
           popupTemplate: loveplacespopup
           
